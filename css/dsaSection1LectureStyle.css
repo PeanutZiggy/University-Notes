@@ -3,9 +3,12 @@ h1{
 	text-align: center;
 }
 
-#topic_list, nav{
+h4{
+	text-align: center;
+}
+
+#resources_list, nav{
 	width: 50%;
 	margin-left: 25%;
-	margin-top: 10vh;
 	text-align: center;
 }
