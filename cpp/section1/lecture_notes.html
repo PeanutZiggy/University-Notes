@@ -97,8 +97,8 @@
 					<code>
 						#include &lt;iostream&gt; <br> <br>
 						int main(){ <br>
-							std::cout << "Hello world!\n"; <br>
-							return 0; <br>
+							&emsp;&emsp;&emsp;std::cout << "Hello world!\n"; <br>
+							&emsp;&emsp;&emsp;return 0; <br>
 						}
 					</code>
 					<ul>
@@ -113,8 +113,8 @@
 						using namespace std; <br>
 						<br>
 						int main(){ <br>
-							cout << "Hello world! \n"; <br>
-							return 0; <br>
+							&emsp;&emsp;&emsp;cout << "Hello world! \n"; <br>
+							&emsp;&emsp;&emsp;return 0; <br>
 						}	
 					</code>
 					<p class="lead">(Some style guides prefer to put std:: everywhere)</p>
@@ -123,14 +123,14 @@
 					<p class="lead">In C++ (as in C), one can define functions independent of any class:</p>
 					<code>
 						int square(int n){ <br>
-							return n*n; <br>
+							&emsp;&emsp;&emsp;return n*n; <br>
 						}
 					</code>
 					<p class="lead">A function called min is used as the entry point of the program:</p>
 					<code>
 						int main(){ <br>
-							// whatever you like here <br>
-							return 0; <br>
+							&emsp;&emsp;&emsp;// whatever you like here <br>
+							&emsp;&emsp;&emsp;return 0; <br>
 						}
 					</code>
 					<p class="lead">The return value is reported to the system when the program exits: 0 means success; anything else means something went wrong.</p>
@@ -145,10 +145,10 @@
 					<p class="lead">For example, this means the same in both languages:</p>
 					<code>
 						int factorial(int n){ <br>
-							int prod = 1; <br>
-							for (int i = 1; i <= n; ++i) <br>
-							&emsp;&emsp;prod = prod * i; <br>
-							return prod; <br>
+							&emsp;&emsp;&emsp;int prod = 1; <br>
+							&emsp;&emsp;&emsp;for (int i = 1; i <= n; ++i) <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;prod = prod * i; <br>
+							&emsp;&emsp;&emsp;return prod; <br>
 						}
 					</code>
 					<p class="lead">(but in Java this must be a method inside a class)</p>
@@ -176,9 +176,9 @@
 						using namespace std; <br>
 						<br>
 						int main() { <br>
-						&emsp;int i = 3; <br>
-						&emsp;cout << "The value is " << i << '\n'; <br>
-						&emsp; return 0; <br>
+						&emsp;&emsp;&emsp;int i = 3; <br>
+						&emsp;&emsp;&emsp;cout << "The value is " << i << '\n'; <br>
+						&emsp;&emsp;&emsp; return 0; <br>
 						}
 					</code>
 					<p class="lead">The << operator to the left, and returns the stream, so the above line is equivalent to </p>
@@ -194,8 +194,8 @@
 						using namespace std; <br>
 						<br>
 						int main() { <br>
-						&emsp;cout << "Hello world!" << endl; <br>
-						&emsp;return 0; <br>
+						&emsp;&emsp;&emsp;cout << "Hello world!" << endl; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
 						}
 					</code>
 					<p class="lead">but this is slightly different. The endl manipulator output '\n' and then flushes the output, so the output line is equivalent to</p>
@@ -210,16 +210,120 @@
 						using namespace std; <br>
 						<br>
 						int main(){ <br>
-						&emsp;int i; <br>
-						&emsp;cout << "Type a number: "; <br>
-						&emsp;cin >> i; <br>
-						&emsp;cout << i << " times 3 is " << (i*3) << '\n'; <br>
-						&emsp;return 0; <br>
+						&emsp;&emsp;&emsp;int i; <br>
+						&emsp;&emsp;&emsp;cout << "Type a number: "; <br>
+						&emsp;&emsp;&emsp;cin >> i; <br>
+						&emsp;&emsp;&emsp;cout << i << " times 3 is " << (i*3) << '\n'; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
 						}
 					</code>
 					<p class="lead">The >> operator reads from an input stream. It is overloaded in a similar way to the << operator.</p>
 					<h4 id="section_seven">Strings</h4>
+					<h5>Using strings</h5>
+					<code>
+						#include &lt;iostream&gt; <br>
+						#include &lt;string&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main(){ <br>
+						&emsp;&emsp;&emsp;cout << "Please enter your first name: "; <br>
+						&emsp;&emsp;&emsp;string name; <br>
+						&emsp;&emsp;&emsp;cin >> name; <br>
+						<br>
+						&emsp;&emsp;&emsp;cout << "Hello, " << name << "!\n"; <br>
+						&emsp;&emsp;&emsp;cout << "Your name has " << name.size() << " letters.\n"; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<h5>String Details</h5>
+					<code>
+						#include &lt;string&gt;
+					</code>
+					<p class="lead">includes a standard header defining a type std::string.</p>
+					<code>string name;</code>
+					<p class="lead">declares a variable name of the type string and initializes it to an empty string (different from Java).</p>
+					<code>cin >> name;</code>
+					<p class="lead">reads one word from standard input into name.</p>
+					<code>cout << name.size();</code>
+					<p class="lead">A string is an object, with a member function (method in Java terms) size() that returns a number, the length of the string.</p>
+					<h5>Properties of types</h5>
+					<ul>
+						<li>Like Java, C++ has primitive types, like int and double, and also class types, like string.</li>
+						<li>In Java, a variable of class type holds a reference to an object, which has to be created with new.</li>
+						<li>In C++, a variable of class type holds an object, which is initialized in some default way if you don't give an initial value.</li>
+					</ul>
+					<code>
+						string name; //initialized as empty <br>
+						string another  = "Fred"; <br>
+						string name = another; //copies the string <br>
+					</code>
+					<ul>
+						<li>In contrast, local variables of primitive types are not initialized to default values.</li>
+					</ul>
+					<h5>Summary</h5>
+					<p class="lead">Much of basic C++ is similar to Java, but we've already noticed some differences.</p>
+					<ul>
+						<li>Different syntax for accessing libraries (#include and namespace)</li>
+						<li>Functions can be defined independent of classes</li>
+						<li>More extensive use of overloading</li>
+						<li>Variables of class type contain objects, not references. (We'll explore the consequences of this.)</li>
+					</ul>
+					<p class="lead">Next week, we'll look at using sequential containers (vector, list, deque, etc).</p>
 					<h4 id="section_eight">Exercises</h4>
+					<p class="lead">
+						1. Write a program that requests the user's age, reads the age they provide and then prints out: <br>
+						<samp>X is too young.</samp> <br>
+						if the supplied age is less than 18, <br>
+						<samp>X is too old.</samp> <br>
+						if the supplied age is greater than 30, and <br>
+						<samp>X is the right age.</samp> <br>
+						otherwise, where in each case X is replaced by the supplied age.
+					</p>
+					<p class="lead">
+						2. Write a program that requests the user's name, reads the string they provide and then prints out: <br>
+						<samp>Hello, XXXXXX!</samp><br>
+						<samp>==============</samp><br>
+						where XXXXXX is replaced by the name provided by the user. <br>
+						Note: The number of equal signs in the bottom should be adjusted to account for the length of the name provided.
+					</p>
+					<p class="lead">
+						3. The program below is a simple guessing game: <br>
+						<code>
+							#include &lt;iostream&gt;<br>
+							#include &lt;cstdlib&gt;<br>
+							#include &lt;ctime&gt;<br>
+							<br>
+							using namespace std; <br>
+							<br>
+							int main(){ <br>
+							&emsp;&emsp;&emsp;srand(time(nullptr));<br>
+							&emsp;&emsp;&emsp;int n = 10;<br>
+							&emsp;&emsp;&emsp;secret = rand() % n + 1;<br>
+							&emsp;&emsp;&emsp;cout << "Guess a number between 1 and " << n << ": ";<br>
+							&emsp;&emsp;&emsp;int guess; <br>
+							&emsp;&emsp;&emsp;while (guess != secret) { <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cout << "Wrong! Guess again: ";<br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cin >> guess; <br>	
+							&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;cout << "Correct!\n";<br>
+							&emsp;&emsp;&emsp;return 0;<br>
+							}
+						</code> <br>
+						Some explanations: <br>
+						<ul>
+							<li>The expression srand(time(nullptr)) initializes the system's pseudo-random number generator.</li>
+							<li>The expression rand() % n + 1 generates a random number between 1 and n (here set to 10).</li>
+							<li>The system headers &lt;cstdlib&gt; and &lt;ctime&gt; make available the functions used in these expressions. (The initial c hints they are borrowed from C.)</li>
+						</ul>
+					</p>
+					<p class="lead">Starting with this program:</p>
+					<p class="lead">
+						(a) Run the program, and make sure you understand it <br>
+						(b) Modify the program so that instead of merely saying that a guess is wrong, it indicates whether the guess was too high or too low <br>
+						(c) Count the number of guesses made, and report them when the user finally succeeds in guessing the secret number <br>
+						(d) Change n to something larger, since this version allows the user to guess the secret number more quickly
+					</p>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
 					<div class="list-group">
