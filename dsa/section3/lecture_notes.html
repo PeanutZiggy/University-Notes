@@ -27,14 +27,174 @@
 			<div class="row">
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					<h4 id="section1">Learning Objectives</h4>
+					<p class="lead">Understand and be able to use:</p>
+					<ul>
+						<li>the abstract data type queue</li>
+						<li>the data structures:
+							<ul>
+								<li>Heaps</li>
+								<li>Extensible arrays</li>
+							</ul>
+						</li>
+					</ul>
+					<p class="lead">Be able to understand, apply and develop algorithms to those above, most notably:</p>
+					<ul>
+						<li>Adding elements</li>
+						<li>Extracting elements</li>
+						<li>Heap sort</li>
+					</ul>
 					<h4 id="section2">Trees</h4>
+					<p class="lead">
+						Trees are data structures that have a root, nodes branches and leaves <br>
+						Most nodes are at the end of a branch. The only exception is the root (which is the top node) <br>
+						Branches proceed from notes <br>
+						Nodes without branches are called leaves <br>
+						The nodes n2, n3 at the end of node n1's branches are its children, and n1 is the parent of n2 and n3. <br>
+						The root is thus a node with no parents <br>
+						The leaves are nodes with no children <br>
+					</p>
+					<h5>Tree Types</h5>
+					<p class="lead">
+						A binary tree is a tree in which each node has, at most, two children. <br>
+						A perfectly balanced binary tree is a tree whose least deep leaf is no more than one level apart from the deepest one.
+					</p>
 					<h4 id="section3">Heaps</h4>
+					<p class="lead">
+						A heap is a perfectly balanced binary tree such that:
+					</p>
+					<ul>
+						<li>No node is larger than its parent</li>
+						<li>All items on the lowest level are so far to the left as possible</li>
+					</ul>
 					<h4 id="section4">Heap Operations</h4>
+					<p class="lead">
+						Heap is empty if the root is empty <br>
+						Heap insertion: add a node to the heap - displacing other nodes as necesary so that the heap remains a heap <br>
+						Heap extraction: remove the element with the highest value in the heap (the root), moving the other nodes as necessary so that the heaps remains a heap.
+					</p>
 					<h4 id="section5">Heap Insertion</h4>
+					<p class="lead">
+						Add the new node as a leaf <br>
+						Sift the new node up to its correct position (at most log n swaps - because the tree has at most log n levels)
+					</p>
 					<h4 id="section6">Heap Extraction</h4>
+					<p class="lead">
+						Extract the root, and place the last leaf in the root position <br>
+						Re-establish the heap conditions (at most log n swaps)
+					</p>
+					<h5>Heaps and Arrays</h5>
+					<p class="lead">
+						Heaps can be represented as arrays
+					</p>
+					<h5>An implementation in Java</h5>
+					<p class="lead">
+						<code>
+							public class HeapPQ implements PriorityQueue { <br>
+							&emsp;private int data; //data[] is the heap <br>
+							&emsp;private int count = 0; <br>
+							<br>
+							&emsp;public HeapPQ(int size) {data = new int[size];} <br>
+							<br>
+							&emsp;public boolean isEmpty() {return count == 0;} <br>
+							} <br>
+						</code>
+					</p>
+					<h5>Relating Indices in Java</h5>
+					<p class="lead">
+						You will remember that:
+					</p>
+					<ul>
+						<li>the parent of node n is node (n-1)/2</li>
+						<li>the left child of node n is node 2n + 1</li>
+						<li>the right child of node n is node 2n + 2</li>
+					</ul>
+					<p class="lead">
+						<code>
+							private int parent(int n) {return (n-1)/2;} <br>
+							private int left(int n) {return n*2 + 1;} <br>
+							private int right(int n) {return n*2 + 2;} <br>
+						</code>
+					</p>
+					<h5>Heap Insertion</h5>
+					<p class="lead">Function add(elt) where data is the array containing the heap and count is the heap size:</p>
+					<p class="lead">
+						<code>
+							pos &larr; count + 1 <br>
+							WHILE pos > 1 AND data[parent of pos] < elt <br>
+							&emsp;data[pos] &larr; data[parent of pos] <br>
+							&emsp;pos &larr; parent of pos <br>
+							data[pos] &larr; elt <br>
+							count &larr; count + 1 <br>
+						</code>
+					</p>
+					<h5>Heap Extraction</h5>
+					<p class="lead">Function extractMax() where "data" is the array containing the heap and "count" is the heap size: </p>
+					<p class="lead">
+						<code>
+							max &larr; data[1] <br>
+							data[1] &larr; data[count] <br>
+							count &larr; count - 1 <br>
+							moveDown(data, 1, count) <br>
+							Return max <br>
+						</code>
+						Function moveDown(data, first, last) moves the element at first position down to its proper position
+					</p>
+					<h5>Moving a Key Down the Heap</h5>
+					<p class="lead">Function moveDown(data, first, last):</p>
+					<p class="lead">
+						<code>
+							WHILE left child of first <= last <br>
+							&emsp;larger &larr; position of the child with the larger value <br>
+							&emsp;&emsp;IF data[first] >= data[larger] THEN <br>
+							&emsp;&emsp;&emsp;Break the while loop <br>
+							&emsp;&emsp;swap first and larger in data <br>
+							&emsp;first &larr; larger <br>
+						</code>
+					</p>
+					<p class="lead">Remember that first, larger and last are positions in array data. The value of largest, for example, is data[largest].</p>
 					<h4 id="section7">Sorting using Heaps</h4>
+					<p class="lead">
+						Heap sort involves: <br>
+						<ul>
+							<li>adding the elements to a heap, and then</li>
+							<li>extracting the elements from the heap</li>
+						</ul>
+					</p>
+					<p class="lead">
+						This could be done with just one array: <br>
+						<ul>
+							<li>in the first phase, the heap grows as the unsorted section shrinks</li>
+							<li>in the second phase, the heap shrinks as the sorted portion grows</li>
+						</ul>
+					</p>
+					<h5>Heap Sort in Java</h5>
+					<p class="lead">
+						<code>
+							void heapsort(int[] data) { <br>
+							&emsp;\\first phase: heap goes from data[i+1] to <br>
+							&emsp;\\data[data.length-1]. The rest of data[] is unsorted <br>
+							&emsp;for(int i = data.length/2 - 1; i >= 0; i--) { <br>	
+							&emsp;&emsp;moveDown(data, i, data.length-1); <br>
+							&emsp;&emsp;\\second phase: heap goes from data[0] to data[i] <br>
+							&emsp;&emsp;\\the rest contains the largest elements, sorted <br>
+							&emsp;}
+							&emsp;for(int i = data.length - 1; i >= 1; i--) { <br>
+							&emsp;&emsp;swap(data, 0, i); <br>
+							&emsp;&emsp;moveDown(data, 0, i-1); <br>
+							&emsp;}
+							}
+						</code>
+					</p>
 					<h4 id="section8">Heap Sort Analysis</h4>
+					<p class="lead">
+						Heap sort performs O(n) heap operations, each taking O(log n) time, in total O(n log n) time in the worst case. <br>
+						Heap sort and quicksort have both average time complexity of O(n log n), but heap sort is normally slower than quicksort (different constant factors). <br>
+						Quicksort is preferred when no guaranteed response time needed <br>
+						Heap sort requires only O(1) extra memory space, in contrast to O(n) for merge sort or O(log n) for quicksort (on average, O(n) in the worst case). <br>
+						A refinement: build the heap from the bottom up. This can be shown to take O(n) time, but the O(n log n) selection phase still dominates. <br>
+					</p>
 					<h4 id="section9">Dynamic Data Structures</h4>
+					
 					<h4 id="section10">Queues</h4>
 					<h4 id="section11">Amortised Analysis</h4>
 					<h4 id="section12">Summary of Extensible Arrays</h4>
