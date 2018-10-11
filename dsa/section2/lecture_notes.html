@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DSA - Section 1 Lecture Notes</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="../../css/dsaSection1LectureStyle.css">
+	</head>
+	<body>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<div class="container">
+			<h1>Data Structures and Algorithms</h1>
+			<h4>Section 1: Introduction and Basic Concepts</h4>
+			<h4 style="text-align: center;">Lecture Notes</h4>
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="../index.html">Data Structures and Algorithms</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Section 1</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Lecture Notes</li>
+				</ol>
+			</nav>
+
+			<div class="row">
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<h4 id="section_one">What is this module about?</h4>
+					<p class="lead">An abstract approach to programming as:</p>
+					<ul>
+						<li>organising information</li>
+						<li>performing computation</li>
+					</ul>
+					<p class="lead">Essential for computing professionals:</p>
+					<ul>
+						<li>knowledge of common data structures and algorithms</li>
+						<li>knowledge of when and how to use them</li>
+						<li>ability to analyse and develop them</li>
+					</ul>
+					<h4 id="section_two">Context</h4>
+					<p class="lead">Builds on concepts from...</p>
+					<ul>
+						<li>
+							Computation and Reasoning
+							<ul>
+								<li>Algorithms</li>
+								<li>Complexity analysis</li>
+							</ul>
+						</li>
+						<li>
+							Systems Architecture
+							<ul>
+								<li>How the operating systems handle programs execution</li>
+							</ul>
+						</li>
+						<li>Programming
+							<ul>
+								<li>Describing Algorithms</li>
+								<li>Executing algorithms</li>
+							</ul>
+						</li>
+					</ul>
+					<h4 id="section_three">Learning Objectives</h4>
+					<ul>
+						<li>Explain the workings of standard data structures and algorithms</li>
+						<li>Analyse the space and time complexity of algorithms</li>
+						<li>Identify the most imprtant abstract data types and the ways in which they may have been implemented</li>
+						<li>Select appropriate data structures and algorithms for particular practical situations</li>
+						<li>Describe an implementation using plain English or pseudocode</li>
+						<li>Devise appropriate algorithms to address specific problems</li>
+					</ul>
+					<h4 id="section_four">How to Reach Learning Goals</h4>
+					<ul>
+						<li>Work continuosly</li>
+						<li>Attend the lectures (arrive on time!)</li>
+						<li>Go to the tutorials and do the exercises</li>
+						<li>Use interactive examples</li>
+						<li>Program the algorithms yourself</li>
+						<li>Work through all the exercises</li>
+						<li>Read the relevant sections in the textbook</li>
+						<li>Do additional exercises</li>
+					</ul>
+					<h4 id="section_five">Course Text</h4>
+					<p class="lead">Weiss, Mark Allen: Data Structures & Problem Solving using Java (4th editoin). Pearson Addison-Wesley, 2014</p>
+					<p class="lead">...or, alternatively,</p>
+					<p class="lead">Drozdek, Adam: Data Structures and Algorithms in Java (4th edition). Cengage 2013</p>
+					<h4 id="section_six">Organisation</h4>
+					<p class="lead">
+						Module Lecturer: Aravin Naren <br>
+						Email: aravin.naren.1@city.ac.uk <br>
+						Office Hours: A302 (Thursday 15:00 to 16:50) <br>
+						check on-line (via Moodle) for potential changes <br>
+						Lectures: 2 hours/week <br>
+						Thursdays: 9:00 to 10:50 in A130 <br>
+						Tutorial/Lab: 1 hour/week <br>
+						Leaving 120 hours for reading, coursework preparation, etc... <br>
+						Material on Moodle, with discussoin board for mutual help
+					</p>
+					<h4 id="section_seven">Exercises</h4>
+					<p class="lead">
+						Exercise sheets will be available on Moodle every week. The exercises will be the topic of the tutorials. <br>
+						<br>
+						On even weeks will include a programming exercise. <br>
+						<br>
+						Doing the exercise is essential in preparing for the assessments.
+					</p>
+					<h4 id="section_eight">Questions and Discussion</h4>
+					<p class="lead">Discussion forum on Moodle</p>
+					<p class="lead">Asking specific questions</p>
+					<ul>
+						<li>Moodle, tutorials, lectures, TAs surgeries and module leader's office hours</li>
+					</ul>
+					<p class="lead">Note that Moodle will also be used for anouncements</p>
+					<h4 id="section_nine">Assessment</h4>
+					<p class="lead">Formative: </p>
+					<ul>
+						<li>3 Multiple Choice Quizzes in weeks 3, 5 and 7</li>
+					</ul>
+					<p class="lead">Summative: </p>
+					<ul>
+						<li>Oral exam (viva) late in the term based on lectures and tutorials, worth 30% of overall marks</li>
+						<li>Written open books exam in January, worth 70% of overall marks</li>
+					</ul>
+					<h4 id="section_ten">Feedback</h4>
+					<p class="lead">Tutorials</p>
+					<ul>
+						<li>Formative feedback, but you must do the exercises first</li>
+					</ul>
+					<p class="lead">Quizzes</p>
+					<ul><li>Formative feedback online via Moodle</li></ul>
+					<p class="lead">Viva</p>
+					<ul><li>Immediately, face to face</li></ul>
+					<p class="lead">Exam</p>
+					<ul><li>Observatoins on general perfomance via Moodle</li></ul>
+					<h4 id="section_eleven">Week 1: Basic Concepts</h4>
+					<p class="lead">
+						What are algorithms and data structure? <br>
+						<br>
+						Describing an algorithm <br>
+						Properties of algorithms <br>
+						<br>
+						Data struture: static arrays <br>
+						Algorithm type: search <br>
+					</p>
+					<h5>Algorithms in Computing</h5>
+					<p class="lead">
+						Mathematical description of actions on numbers or symbols. <br>
+					</p>
+					<ul>
+						<li>can be executed by a machine</li>
+						<li>are easily accessible to analysis</li>
+					</ul>
+					<p class="lead">
+						We will look at the abstract properties of algorithms, understanding how they work and using a bit of mathematics to determine ohw they behave.
+					</p>
+					<h5>Describing an Algorithm</h5>
+					<ul>
+						<li>As unstructured text</li>
+						<li>As structured text</li>
+						<li>As a flow chart</li>
+						<li>As pseudocode</li>
+						<li>As Java code (or any programming language)</li>
+					</ul>
+					<p class="lead">In this module we will mainly use pseudocode and Java.</p>
+					<h5>Data Structures</h5>
+					<p class="lead">Data structures are ways of organising data.</p>
+					<p class="lead">They should</p>
+					<ul>
+						<li>represent all relevant information</li>
+						<li>use little memory</li>
+						<li>support efficient algorithms</li>
+					</ul>
+					<h5>A simple data structure: a static array</h5>
+					<ul>
+						<li>Built into most programming languages</li>
+						<li>A finite set of elements</li>
+						<li>The elements are in a fixed sequence</li>
+						<li>Elements can be addressed by indices (Pseudocode, Mathematics, Pascal) or offsets (Java, C, C++)</li>
+					</ul>
+					<h5>Devising programmes to solve problems</h5>
+					<p class="lead">...is a combination of identifying the most suitable</p>
+					<ul>
+						<li>data structure to contain the data</li>
+						<li>algorithm to accomplish the task</li>
+					</ul>
+					<br>
+					<ul>
+						<li>Not all combination of data structures and algorithms work</li>
+						<li>A given combination of data structure and algorithm may be ideal for one situation, yet not the best for another</li>
+					</ul>
+					<h5>Known algorithm examples</h5>
+					<ul>
+						<li>Selection sort</li>
+						<li>Insertion sort</li>
+						<li>Quick sort</li>
+						<li>Merge sort</li>
+						<li>Binary Search</li>
+					</ul>
+					<h4 id="section_twelve">Computational Complexity</h4>
+					<p class="lead">Description of the resources needed by an algorithm:</p>
+					<ul>
+						<li>
+							Complexity in
+							<ul>
+								<li>(running) time or</li>
+								<li>(memory) space</li>
+							</ul>
+						</li>
+						<li>Best, worst and average cases</li>
+						<li>Representation by growth</li>
+					</ul>
+					<h5>Formalism for big-O</h5>
+					<p class="lead">
+						Definition: f(n) is in O(g(n)) if and only if c and N>0 exist such that for all n>N, f(n)<=c*g(n) <br>
+						c is a constant factor, and N is an index of asymptotic behaviour. <br>
+						Example: f(n) = 2n<sup>2</sup> + 3n + 1 is in O(n<sup>2</sup>) <br>
+						N=2 and c=4, or N=4 and c=3, etc. <br>
+						Property: if f1(n) and f2(n) are both in O(g(n)), so is f1(n)+f2(n) <br>
+						Proof(sketch): Let C<small>1</small>, C <small>2</small> be the constant factors for f1 and f2, then with C <small>1+2</small> = C <small>1</small> + C <small>2</small> apply big-O definition.
+					</p>
+					<h5>Implications...</h5>
+					<p class="lead">
+						<ul>
+							<li>Big-O is an upper bound, actual values may be less</li>
+							<li>If g(n) <= f(n) then g(n) is in O(f(n))</li>
+							<li>Saying that an algorithm a is in O(g(n)) means that it grows no faster than g(n)</li>
+						</ul>
+					</p>
+					<p class="lead">Note: We often omit the word 'in' and say a is O(g(n))</p>
+					<h5>Properties of big-O</h5>
+					<p class="lead">
+						Rule 1: Scaling by a constant: O(c*f(n)) = O(f(n)) <br>
+						Rule 2: Addition: <br>
+						if f(n) is O(g(n)) (always applies to one part) <br>
+						then O(f(n)) + O(g(n)) = O(g(n)) (greater term dominates) <br>
+						<br>
+						Rule 3: Multiplication: <br>
+						O(f(n)) * O(g(n)) = O(f(n) * g(n)) <br>
+						<br>
+						Rule 4: Logarithms: <br>
+						O(log<small>a</small>n) = O(log<small>b</small>n) (we usually just write O(log n))
+					</p>
+					<h5>Example Calculations</h5>
+					<ul>
+						<li>
+							Orders of sequential algorithm phases are added: <br>
+							e.g. an O(n<sup>2</sup>) phase followed by an O(n log(n)) phase is O(n<sup>2</sup>) + O(n log(n)) = O(n<sup>2</sup>)
+						</li>
+						<li>(n log(n) is O(n<sup>2</sup>), apply Rule 2)</li>
+						<li>3n log(n) + 100n + 50log(n) + 23 is...</li>
+						<li>Orders of nested loops are multiplied: <br>
+						e.g. an outer loop is executed O(n<sup>2</sup>) times and contains an inner loop that is executed O(n) times (its content is O(1)): <br>
+						O(n<sup>2</sup>) * O(n) = O(n<sup>3</sup>)	Rule 3
+						</li>
+						<li>3n log(n) * 2n + 7log(n) is...</li>
+					</ul>
+					<h5>Common Types of complexity</h5>
+					<p class="lead">
+						constant: O(1) <br>
+						logarithmic: O(log n)	good <br>
+						linear: O(n) <br>
+						quadratic: O(n<sup>2</sup>)	acceptable(sometimes) <br>
+						cubic: O(n<sup>3</sup>) <br>
+						polynomial: O(n<sup>k</sup>) <br>
+						exponential: O(a<sup>n</sup>)	intractable <br>
+						factorial: O(n!) <br>
+					</p>
+					<h4 id="section_thirteen">Find the Order of Complexity</h4>
+					<h4 id="section_fourteen">Some Algorithms + Complexity</h4>
+					<p class="lead">
+						Binary search: O(log n) time, O(1) space <br>
+						Linear search: O(n) time, O(1) space <br>
+						Multiplication of n-bit integers: O(n log n log log n) <br>
+						Matrix multiplication for n*n matrices (std): )(n<sup>3</sup>) <br>
+						Travelling salesman: Best known algorithms take O(2<sup>n</sup>) time <br>
+						All permutations of a sequence: O(n!)
+					</p>
+					<h4 id="section_fifteen">Well Known Complexity Classes</h4>
+					<p class="lead">P: computable in polynomial time</p>
+					<ul><li>these problems are considered tractable (although there are limits in practice)</li></ul>
+					<p class="lead">NP: computable in polynomial time on a non-deterministic (inifinitely parallel) machine</p>
+					<ul><li>if we can take a solution and test it in polynomial time, we can find any solution by testing all possible solutions in parallel</li></ul>
+					<p class="lead">EXPTIME: exponential time</p>
+					<ul><li>these problems are known to be really hard</li></ul>
+					<h5>NP-Complete Problems</h5>
+					<p class="lead">Class of combinatorial problems that are equally hard; e.g.:</p>
+					<ul>
+						<li>Travelling Salesman problem: Shortest tour visiting all cities in a set</li>
+						<li>Knapsack: Given a set of itemswith a given value and weight each, find the set with the highest value within a weight limit</li>
+						<li>Satisfiability: Find the assignment of values to make a logical proposition true</li>
+					</ul>
+					<p class="lead">Any NP problem can be reduced to any of these, i.e. if we have a solution to one of them we have one to all NP.</p>
+					<h4 id="section_sixteen">Reading Materials</h4>
+					<p class="lead">For visualisations check Linear and Binary Search on <a href="https://www.cs.usfca.edu/~galles/visualization/Search.html">here</a>
+					</p>
+					<p class="lead">Weiss: Chapter 5</p>
+					<p class="lead">Drozdek: Chapter 2</p>
+					<p class="lead">Next Section: Recursion and Abstract Data Types</p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
+					<div class="list-group">
+						<a href="#section_one" class="list-group-item list-group-item-action">What This Module is About</a>
+						<a href="#section_two" class="list-group-item list-group-item-action">Context</a>
+						<a href="#section_three" class="list-group-item list-group-item-action">Learning Objectives</a>
+						<a href="#section_four" class="list-group-item list-group-item-action">How to Reach Learning Goals</a>
+						<a href="#section_five" class="list-group-item list-group-item-action">Course Text</a>
+						<a href="#section_six" class="list-group-item list-group-item-action">Organisation</a>
+						<a href="#section_seven" class="list-group-item list-group-item-action">Exercises</a>
+						<a href="#section_eight" class="list-group-item list-group-item-action">Questions and Discussion</a>
+						<a href="#section_nine" class="list-group-item list-group-item-action">Assessment</a>
+						<a href="#section_ten" class="list-group-item list-group-item-action">Feedback</a>
+						<a href="#section_eleven" class="list-group-item list-group-item-action">Week 1: Basic Concepts</a>
+						<a href="#section_twelve" class="list-group-item list-group-item-action">Computational Complexity</a>
+						<a href="#section_thirteen" class="list-group-item list-group-item-action">Finding the Order of Complexity</a>
+						<a href="#section_fourteen" class="list-group-item list-group-item-action">Some Algorithms + Complexity</a>
+						<a href="#section_fifteen" class="list-group-item list-group-item-action">Well Known Complexity Classes</a>
+						<a href="#section_sixteen" class="list-group-item list-group-item-action">Reading Materials</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
