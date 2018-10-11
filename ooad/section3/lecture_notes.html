@@ -27,10 +27,76 @@
 			<div class="row">
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					<h4 id="section1">UML Class Notation</h4>
+					<p class="lead">
+						Classes are named in upper camel case <br>
+						Use descriptive names that are nouns or noun phrases <br>
+						Avoid abbreviations <br>
+					</p>
 					<h4 id="section2">Attribute Compartment</h4>
+					<p class="lead">
+						visibility name : type multiplicity = initialValue <br>
+						<br>
+						Everything is optional except name <br>
+						initialValue is the value the attribute gets when objects of the class are instantiated <br>
+						Attributes are named in low camel case <br>
+						<ul>
+							<li>Use descriptive names that are nouns or noun phrases</li>
+							<li>Avoid abbreviations</li>
+						</ul>
+						Attributes may be prefixed with a stereotype and postfixed with a list of tagged values
+					</p>
 					<h4 id="section3">Visibility</h4>
+					<p class="lead">
+						<table class="table">
+							<tr>
+								<th>Symbol</th>
+								<th>Name</th>
+								<th>Semantics</th>
+							</tr>
+							<tr>
+								<td>+</td>
+								<td>public</td>
+								<td>Any element that can access the class can access any of its features with public visibility.</td>
+							</tr>
+							<tr>
+								<td>-</td>
+								<td>private</td>
+								<td>Only operations within the class can access features with private visibility.</td>
+							</tr>
+							<tr>
+								<td>#</td>
+								<td>protected</td>
+								<td>Only operations within the class, or within children of the class, can access features with protected visibility.</td>
+							</tr>
+							<tr>
+								<td>~</td>
+								<td>package</td>
+								<td>Any element that is in the same package as the class, or in a nested sub-package, can access any of its features with package visibility.</td>
+							</tr>
+						</table>
+					</p>
+					<p class="lead">
+						You may ignore visibility in Analysis <br>
+						In design, attributes usually have private visibility (encapsulation) <br>
+					</p>
 					<h4 id="section4">Multiplicity</h4>
+					<p class="lead">
+						Multiplicity allows you to model collection of things <br>
+						[0..1] means that the attribute may have the value null
+					</p>
 					<h4 id="section5">Operation Compartment</h4>
+					<p class="lead">
+						Operations are named lower camel case <br>
+						Special symbols and abbreviations are avoided <br>
+						Operation names are usually a verb or verb phrase <br>
+						Operations may have more than one return type <br>
+						They can return multiple objects <br>
+						Operations may be prefixed with a stereotype and postfixed with a list of tagged values
+					</p>
+					<h5>Parameter Direction</h5>
+					<p class="lead">
+						
+					</p>
 					<h4 id="section6">Scope</h4>
 					<h4 id="section7">Object Construction</h4>
 					<h4 id="section8">Modelling Class Methods</h4>
