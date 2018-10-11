@@ -90,12 +90,12 @@
 					<p class="lead">
 						<code>
 							public class HeapPQ implements PriorityQueue { <br>
-							&emsp;private int data; //data[] is the heap <br>
-							&emsp;private int count = 0; <br>
+							&emsp;&emsp;&emsp;&emsp;private int data; //data[] is the heap <br>
+							&emsp;&emsp;&emsp;&emsp;private int count = 0; <br>
 							<br>
-							&emsp;public HeapPQ(int size) {data = new int[size];} <br>
+							&emsp;&emsp;&emsp;&emsp;public HeapPQ(int size) {data = new int[size];} <br>
 							<br>
-							&emsp;public boolean isEmpty() {return count == 0;} <br>
+							&emsp;&emsp;&emsp;&emsp;public boolean isEmpty() {return count == 0;} <br>
 							} <br>
 						</code>
 					</p>
@@ -121,8 +121,8 @@
 						<code>
 							pos &larr; count + 1 <br>
 							WHILE pos > 1 AND data[parent of pos] < elt <br>
-							&emsp;data[pos] &larr; data[parent of pos] <br>
-							&emsp;pos &larr; parent of pos <br>
+							&emsp;&emsp;&emsp;&emsp;data[pos] &larr; data[parent of pos] <br>
+							&emsp;&emsp;&emsp;&emsp;pos &larr; parent of pos <br>
 							data[pos] &larr; elt <br>
 							count &larr; count + 1 <br>
 						</code>
@@ -144,11 +144,11 @@
 					<p class="lead">
 						<code>
 							WHILE left child of first <= last <br>
-							&emsp;larger &larr; position of the child with the larger value <br>
-							&emsp;&emsp;IF data[first] >= data[larger] THEN <br>
-							&emsp;&emsp;&emsp;Break the while loop <br>
-							&emsp;&emsp;swap first and larger in data <br>
-							&emsp;first &larr; larger <br>
+							&emsp;&emsp;&emsp;&emsp;larger &larr; position of the child with the larger value <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;IF data[first] >= data[larger] THEN <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Break the while loop <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap first and larger in data <br>
+							&emsp;&emsp;&emsp;&emsp;first &larr; larger <br>
 						</code>
 					</p>
 					<p class="lead">Remember that first, larger and last are positions in array data. The value of largest, for example, is data[largest].</p>
@@ -171,17 +171,17 @@
 					<p class="lead">
 						<code>
 							void heapsort(int[] data) { <br>
-							&emsp;\\first phase: heap goes from data[i+1] to <br>
-							&emsp;\\data[data.length-1]. The rest of data[] is unsorted <br>
-							&emsp;for(int i = data.length/2 - 1; i >= 0; i--) { <br>	
-							&emsp;&emsp;moveDown(data, i, data.length-1); <br>
-							&emsp;&emsp;\\second phase: heap goes from data[0] to data[i] <br>
-							&emsp;&emsp;\\the rest contains the largest elements, sorted <br>
-							&emsp;}
-							&emsp;for(int i = data.length - 1; i >= 1; i--) { <br>
-							&emsp;&emsp;swap(data, 0, i); <br>
-							&emsp;&emsp;moveDown(data, 0, i-1); <br>
-							&emsp;}
+							&emsp;&emsp;&emsp;&emsp;\\first phase: heap goes from data[i+1] to <br>
+							&emsp;&emsp;&emsp;&emsp;\\data[data.length-1]. The rest of data[] is unsorted <br>
+							&emsp;&emsp;&emsp;&emsp;for(int i = data.length/2 - 1; i >= 0; i--) { <br>	
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;moveDown(data, i, data.length-1); <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;\\second phase: heap goes from data[0] to data[i] <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;\\the rest contains the largest elements, sorted <br>
+							&emsp;&emsp;&emsp;&emsp;}
+							&emsp;&emsp;&emsp;&emsp;for(int i = data.length - 1; i >= 1; i--) { <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(data, 0, i); <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;moveDown(data, 0, i-1); <br>
+							&emsp;&emsp;&emsp;&emsp;} <br>
 							}
 						</code>
 					</p>
@@ -194,11 +194,234 @@
 						A refinement: build the heap from the bottom up. This can be shown to take O(n) time, but the O(n log n) selection phase still dominates. <br>
 					</p>
 					<h4 id="section9">Dynamic Data Structures</h4>
-					
+					<p class="lead">
+						Amounts of data to store often vary in size in ways we can not determine beforehand <br>
+						Reallocate-and-copy of arrays can solve this problem <br>
+						In general, linked structures are more flexible: <br>
+						<ul>
+							<li>singly linked lists</li>
+							<li>doubly linked lists and circular lists</li>
+							<li>trees and graphs</li>
+						</ul>
+					</p>
 					<h4 id="section10">Queues</h4>
+					<p class="lead">
+						First in First out (FIFO) <br>
+						As opposed to last in first out (stacks) <br>
+						And also to priority queues (in which priorities may not reflect the actual order of addition)
+					</p>
+					<h5>Queue Operations</h5>
+					<p class="lead">
+						You must always remove the element that has been in the queue the longest. <br>
+						The operations are thus: <br>
+						<ul>
+							<li>Add an element to the queue</li>
+							<li>Remove the element added the longest time before</li>
+							<li>Check whether the queue is empty</li>
+						</ul>
+					</p>
+					<h5>A Queue Abstract Data Type</h5>
+					<p class="lead">
+						<code>
+							public interface Queue { <br>
+							&emsp;//Is the queue empty? <br>
+							&emsp;boolean isEmpty(); <br>
+							&emsp;//Add an element to the queue <br>
+							&emsp;void enqueue(int elt); <br>
+							&emsp;//Remove and return the earliest element of the queue <br>
+							&emsp;int dequeue(); <br>
+							} <br>
+						</code>
+					</p>
+					<h5>A Stack Abstract Data Type</h5>
+					<p class="lead">
+						<code>
+							//a stack of integers <br>
+							public interface Stack { <br>
+							&emsp;//is the stack empty? <br>
+							&emsp;boolean isEmpty(); <br>
+							&emsp;//add (push) an element into the stack <br>
+							&emsp;void push(int elt); <br>
+							&emsp;//remove and return the most recently pushed element still in the stack <br>
+							&emsp;int pop(); <br>
+							} <br>
+						</code>
+					</p>
+					<h5>Extending Arrays by Relocate-and-Copy</h5>
+					<p class="lead">
+						Because size is unpredictable: <br>
+						initial array allocation may fall short <br>
+						trying to be safe is wasteful <br>
+						A solution: extensible arrays <br>
+						start with a small array <br>
+						if more space is needed, create a new, larger array and copy elements into it... <br>
+						...adds O(n) to space and O(n) to time per extension <br>
+					</p>
+					<h5>Stacks with Relocate-and-Copy</h5>
+					<p class="lead">
+						<code>
+							public class ArrayStack implements Stack { <br>
+							&emsp;private int count = 0; <br>
+							&emsp;private int[] data = new int[1]; <br>
+							<br>
+							&emsp;public boolean isEmpty(){ <br>
+							&emsp;&emsp;return count == 0; <br>
+							&emsp;} <br>
+							&emsp;public int pop() { <br>
+							&emsp;&emsp;count--; <br>
+							&emsp;&emsp;return data[count]; <br>
+							&emsp;} <br>
+							}
+						</code>
+					</p>
+					<p class="lead">
+						Which was the same as last session. However: <br>
+						<code>
+							public void push(int elt) { <br>
+							&emsp;&emsp;&emsp;if(count == data.length){ //not enough space <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;int[] d1 = new int[data.length + 1]; // new <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;for(int i = 0; i < count; i++){ // array <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;d1[i] = data[i]; // copy elements<br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;data = d1; // use new array <br>
+							&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;data[count] = elt; // add new element<br>
+							&emsp;&emsp;&emsp;count++; <br>
+							}
+						</code>
+					</p>
 					<h4 id="section11">Amortised Analysis</h4>
+					<p class="lead">
+						Amortised complexity refers to the average complexity over a sequence of operations, which normally depend on each other (usually choosing the worst case regarding data input). <br> <br>
+						This is different from what we normally call average case complexity, which averages over different input data for a single, independent operation. <br> <br>
+						E.g. the average complexity (on an array of length n) of Quick sort is O(n log n), the amortised complexity over a sequence of quick sort applications is O(n<sup>2</sup>) (implying the worst case per application.) <br> <br>
+					</p>
+					<h5>Analysis of the Implementation</h5>
+					<p class="lead">
+						In a sequence of n pushes, the number of copies is <br>
+						1 + 2 + 3 + ... + (n - 1)  = n (n - 1) / 2 = O(n<sup>2</sup>) <br>
+						<br>
+						This means that per push operation, there is an amortised cost of O(n). <br>
+						<br>
+						Going up by a larger step than 1 improves things, but only by a constant factor.
+					</p>
+					<h5>An Improvement</h5>
+					<p class="lead">
+						If we double the size whenever we extend, the number of elements copied for n=2<sup>k</sup> pushes is <br>
+						1 + 2 + 2<sup>2</sup> + ... + 2<sup>k-1</sup> = 2<sup>k</sup> - 1 = O(n) <br>
+						<br>
+						This averages out at O(1) per operation, i.e. the amortised cost over the sequence of operations is constant.
+					</p>
+					<h5>Proof: Sum of Powers of 2</h5>
+					<p class="lead">
+						This has been used in the last analysis and the telescopic sum. <br>
+						<br>
+						Statement: &#8721;i=0...k-1 2i = 1 + 2 + 22 + ... + 2k-1 = 2k - 1 <br>
+						<br>
+						Proof by in induction: <br>
+						base case k=2: 20 + 21 = 1 + 2 = 3 = 4 - 1 = 22 - 1 <br>
+						step k to k+1: 20 + ... + 2k-1 + 2k = 2k - 1 + 2k <br>
+						= 2*2k - 1 <br>
+						= 2k+1 - 1 <br>
+					</p>
+					<h5>Array-like Operations in Extensible Arrays</h5>
+					<p class="lead">
+						Some O(1) time operations in extensible arrays: <br>
+						<code>
+							public int size() { <br>
+							&emsp;&emsp;&emsp;return count; <br>
+							} <br>
+							<br>
+							public int elementAt(int pos) { <br>
+							&emsp;&emsp;&emsp;return data[pos]; <br>
+							} <br>
+							<br>	
+							public void setElementAt(int pos, int value) { <br>
+							&emsp;&emsp;&emsp;data[pos] = value; <br>
+							} <br>
+						</code>
+					</p>
 					<h4 id="section12">Summary of Extensible Arrays</h4>
+					<p class="lead">
+						Extensible arrays are an implementation of the Stack ADT that use O(n) space <br>
+						With the right extension policy, these operations take O(1) time <br>
+						They also provide array-like operations at O(1) time <br>
+						Implementing the Queue ADT with extensible arrays is not so convenient <br>
+						For greater convenience, we can use pointers <br>
+					</p>
+					<h5>Extensible Arrays in Java</h5>
+					<p class="lead">
+						Java has data structures for extensible arrays: <br>
+						Vectors and ArrayLists <br>
+						Vectors and ArrayLists are like arrays that can be extended as necessary <br>
+						<ul>
+							<li>You don't have to worry about their size</li>
+							<li>You don't have to extend them explicitly</li>
+							<li>Vectors have objects as elements</li>
+						</ul>
+					</p>
+					<h5>ArrayLists in Java</h5>
+					<p class="lead">
+						Import them: <br>
+						<code>
+							import java.util.List; // ArrayList and Vector are lists <br>
+							import java.util.ArrayList; <br>
+						</code>
+						Create an ArrayList:<br>
+						<code>
+							List l1 = new ArrayList(); <br>
+						</code>
+						Programming against an Interface is more flexible. <br>
+						<br>
+						Adding at index i moves following elements to the right: <br>
+						<code>
+							al.add(i, p); <br>
+						</code>
+						(Array)List and Vector use Generics since Java 5.0 (JDK 1.5): <br>
+						<code>
+							List<String> stringList = new ArrayList<String> (); <br>
+						</code>
+					</p>
+					<h5>Vectors in Java</h5>
+					<p class="lead">
+						To use them you have to import them: <br>
+						<code>
+							import java.util.Vector; <br>
+						</code>
+						<br>
+						To create a vector v1: <br>
+						<code>
+							Vector v1 = new Vector(); <br>
+						</code>
+						<br>
+						The size of vector v1 is: <br>
+						<code>
+							v1.size(); <br>
+						</code>
+						<br>
+						To test whether v1 is empty: <br>
+						<code></code>
+					</p>
+					<h5>Other Vector and ArrayList Methods in Java</h5>
+					<p class="lead">
+						To add an element (object p) at the end of the vector v1 (arrayList a1): <br>
+						<code>
+							v1.addElement(p); a1.add(p); <br>
+						</code>
+						To access the element at position n in vector v1 (arrayList a1): <br>
+						<code>
+							e_n = v1.elementAt(n); e_n = al.get(n); <br>
+						</code>
+						To assign element p to position n in vector v1: <br>
+						<code>
+							v1.set(n, p); // note that this returns the object previously in that position <br>
+						</code>
+					</p>
 					<h4 id="section13">Reading</h4>
+					<p class="lead">
+						Weiss: Chapters 15, 17 and 20 <br>
+						Drozdek: Sections 4.2, 6.1 and 9.3.2 <br>
+					</p>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
 					<div class="list-group">
