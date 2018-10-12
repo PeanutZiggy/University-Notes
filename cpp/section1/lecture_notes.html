@@ -17,9 +17,9 @@
 
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
-					<li class="breadcrumb-item"><a href="../../index.html">Programming in C++</a></li>
-					<li class="breadcrumb-item"><a href="../index.html">Section 1</a></li>
+					<li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="../index.html">Programming in C++</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Section 1</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Lecture Notes</li>
 				</ol>
 			</nav>
@@ -81,10 +81,249 @@
 						<li>implementation-dependent specification , e.g. int is machine word size</li>
 						<li>extension of C (machine-level access)</li>
 					</ul>
+					<h5>C++ as as composite language</h5>
+					<p class="lead">
+						C++ is a very large language, with many layers that have accumulated over time. In his book Effective C++, Scott Meyers suggests thinking of C++ as a "federation of related languages" with different programming styles:
+					</p>
+					<ul>
+						<li>C: a low-level language with built-in data types and control structures. OFten C features co exist with newer, cleaner versions.</li>
+						<li>Object-Oriented C++: classes, inheritance, dynamic binding, etc. (But unlike in Java, one can often avoid these.)</li>
+						<li>Template C++: classes and functions can be parameterized by types.</li>
+						<li>The Standard Template Library: a library of containers, iterators and algorithms using template classes, but not inheritance.</li>
+					</ul>
+					<p class="lead">For the first five weeks, we shall focus on the first and last of these, and introduce the second later.</p>
 					<h4 id="section_five">Basic Program Structure</h4>
+					<h5>A Small C++ Program</h5>
+					<code>
+						#include &lt;iostream&gt; <br> <br>
+						int main(){ <br>
+							&emsp;&emsp;&emsp;std::cout << "Hello world!\n"; <br>
+							&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<ul>
+						<li>A typical program will begin with several #include lines, referecing system headers like &lt;iostream&gt;, which contain collections of related definitions (in this case for I/O streams)</li>
+						<li>This #include line brings into scope several names, including std::cout, the standard output stream. Here std is the standard namespace, which is attached to all names defined in the standard libraries, e.g. std::string, std::vector, etc</li>
+					</ul>
+					<h5>Using the standard namespace</h5>
+					<p class="lead">We can avoid putting std:: in front of every standard name by placing a single using declaration at the top, after the #include lines:</p>
+					<code>
+						#include &lt;iostream&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main(){ <br>
+							&emsp;&emsp;&emsp;cout << "Hello world! \n"; <br>
+							&emsp;&emsp;&emsp;return 0; <br>
+						}	
+					</code>
+					<p class="lead">(Some style guides prefer to put std:: everywhere)</p>
+					<p class="lead">We won't be using any namespaces other than std.</p>
+					<h5>Functions</h5>
+					<p class="lead">In C++ (as in C), one can define functions independent of any class:</p>
+					<code>
+						int square(int n){ <br>
+							&emsp;&emsp;&emsp;return n*n; <br>
+						}
+					</code>
+					<p class="lead">A function called min is used as the entry point of the program:</p>
+					<code>
+						int main(){ <br>
+							&emsp;&emsp;&emsp;// whatever you like here <br>
+							&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<p class="lead">The return value is reported to the system when the program exits: 0 means success; anything else means something went wrong.</p>
+					<h5>Similarities with Java</h5>
+					<p class="lead">Many things in the C part of C++ are much the same as in Java:</p>
+					<ul>
+						<li>primitive types int, doubles, etc</li>
+						<li>declarations, expressions, comments</li>
+						<li>semicolons to end statements and braces for grouping</li>
+						<li>if, for, while, return</li>
+					</ul>
+					<p class="lead">For example, this means the same in both languages:</p>
+					<code>
+						int factorial(int n){ <br>
+							&emsp;&emsp;&emsp;int prod = 1; <br>
+							&emsp;&emsp;&emsp;for (int i = 1; i <= n; ++i) <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;prod = prod * i; <br>
+							&emsp;&emsp;&emsp;return prod; <br>
+						}
+					</code>
+					<p class="lead">(but in Java this must be a method inside a class)</p>
 					<h4 id="section_six">Input and Output</h4>
+					<h5>Text Output</h5>
+					<p class="lead">This statement writes a string to the standard output (the console):</p>
+					<code>
+						cout << "Hello world!\n";
+					</code>
+					<p class="lead">(like System.out.println("Hello world"); in Java)</p>
+					<ul>
+						<li>The &lt;iostream&gt; header defines three standard streams:
+						<br>
+						std::cin standard input (cf. Java's System.in) <br>
+						std::cout standard output (cf. Java's System.out) <br>
+						std:cerr error output (cf. Java's System.err)
+						</li>
+						<li>The << operator, when applied to an output stream and a string, writes the string to the stream.</li>
+						<li>When applied to integers, it performs a left shift (as in Java): the << operator is overloaded.</li>
+					</ul>
+					<h5>Outputting several things</h5>
+					<code>
+						#include &lt;iostream&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main() { <br>
+						&emsp;&emsp;&emsp;int i = 3; <br>
+						&emsp;&emsp;&emsp;cout << "The value is " << i << '\n'; <br>
+						&emsp;&emsp;&emsp; return 0; <br>
+						}
+					</code>
+					<p class="lead">The << operator to the left, and returns the stream, so the above line is equivalent to </p>
+					<code>
+						((cout << "The value is ") << i) << '\n';
+					</code>
+					<p class="lead">It is also overloaded for int and char.</p>
+					<h5>Ending output lines with endl</h5>
+					<p class="lead">Some authors use endl instead of '\n':</p>
+					<code>
+						#include &lt;iostream&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main() { <br>
+						&emsp;&emsp;&emsp;cout << "Hello world!" << endl; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<p class="lead">but this is slightly different. The endl manipulator output '\n' and then flushes the output, so the output line is equivalent to</p>
+					<code>
+						cout << "Hello world!" << '\n' << flush;
+					</code>
+					<p class="lead">But frequent flushing may be costly.</p>
+					<h5>Text Input</h5>
+					<code>
+						#include &lt;iostream&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main(){ <br>
+						&emsp;&emsp;&emsp;int i; <br>
+						&emsp;&emsp;&emsp;cout << "Type a number: "; <br>
+						&emsp;&emsp;&emsp;cin >> i; <br>
+						&emsp;&emsp;&emsp;cout << i << " times 3 is " << (i*3) << '\n'; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<p class="lead">The >> operator reads from an input stream. It is overloaded in a similar way to the << operator.</p>
 					<h4 id="section_seven">Strings</h4>
+					<h5>Using strings</h5>
+					<code>
+						#include &lt;iostream&gt; <br>
+						#include &lt;string&gt; <br>
+						<br>
+						using namespace std; <br>
+						<br>
+						int main(){ <br>
+						&emsp;&emsp;&emsp;cout << "Please enter your first name: "; <br>
+						&emsp;&emsp;&emsp;string name; <br>
+						&emsp;&emsp;&emsp;cin >> name; <br>
+						<br>
+						&emsp;&emsp;&emsp;cout << "Hello, " << name << "!\n"; <br>
+						&emsp;&emsp;&emsp;cout << "Your name has " << name.size() << " letters.\n"; <br>
+						&emsp;&emsp;&emsp;return 0; <br>
+						}
+					</code>
+					<h5>String Details</h5>
+					<code>
+						#include &lt;string&gt;
+					</code>
+					<p class="lead">includes a standard header defining a type std::string.</p>
+					<code>string name;</code>
+					<p class="lead">declares a variable name of the type string and initializes it to an empty string (different from Java).</p>
+					<code>cin >> name;</code>
+					<p class="lead">reads one word from standard input into name.</p>
+					<code>cout << name.size();</code>
+					<p class="lead">A string is an object, with a member function (method in Java terms) size() that returns a number, the length of the string.</p>
+					<h5>Properties of types</h5>
+					<ul>
+						<li>Like Java, C++ has primitive types, like int and double, and also class types, like string.</li>
+						<li>In Java, a variable of class type holds a reference to an object, which has to be created with new.</li>
+						<li>In C++, a variable of class type holds an object, which is initialized in some default way if you don't give an initial value.</li>
+					</ul>
+					<code>
+						string name; //initialized as empty <br>
+						string another  = "Fred"; <br>
+						string name = another; //copies the string <br>
+					</code>
+					<ul>
+						<li>In contrast, local variables of primitive types are not initialized to default values.</li>
+					</ul>
+					<h5>Summary</h5>
+					<p class="lead">Much of basic C++ is similar to Java, but we've already noticed some differences.</p>
+					<ul>
+						<li>Different syntax for accessing libraries (#include and namespace)</li>
+						<li>Functions can be defined independent of classes</li>
+						<li>More extensive use of overloading</li>
+						<li>Variables of class type contain objects, not references. (We'll explore the consequences of this.)</li>
+					</ul>
+					<p class="lead">Next week, we'll look at using sequential containers (vector, list, deque, etc).</p>
 					<h4 id="section_eight">Exercises</h4>
+					<p class="lead">
+						1. Write a program that requests the user's age, reads the age they provide and then prints out: <br>
+						<samp>X is too young.</samp> <br>
+						if the supplied age is less than 18, <br>
+						<samp>X is too old.</samp> <br>
+						if the supplied age is greater than 30, and <br>
+						<samp>X is the right age.</samp> <br>
+						otherwise, where in each case X is replaced by the supplied age.
+					</p>
+					<p class="lead">
+						2. Write a program that requests the user's name, reads the string they provide and then prints out: <br>
+						<samp>Hello, XXXXXX!</samp><br>
+						<samp>==============</samp><br>
+						where XXXXXX is replaced by the name provided by the user. <br>
+						Note: The number of equal signs in the bottom should be adjusted to account for the length of the name provided.
+					</p>
+					<p class="lead">
+						3. The program below is a simple guessing game: <br>
+						<code>
+							#include &lt;iostream&gt;<br>
+							#include &lt;cstdlib&gt;<br>
+							#include &lt;ctime&gt;<br>
+							<br>
+							using namespace std; <br>
+							<br>
+							int main(){ <br>
+							&emsp;&emsp;&emsp;srand(time(nullptr));<br>
+							&emsp;&emsp;&emsp;int n = 10;<br>
+							&emsp;&emsp;&emsp;secret = rand() % n + 1;<br>
+							&emsp;&emsp;&emsp;cout << "Guess a number between 1 and " << n << ": ";<br>
+							&emsp;&emsp;&emsp;int guess; <br>
+							&emsp;&emsp;&emsp;while (guess != secret) { <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cout << "Wrong! Guess again: ";<br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;cin >> guess; <br>	
+							&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;cout << "Correct!\n";<br>
+							&emsp;&emsp;&emsp;return 0;<br>
+							}
+						</code> <br>
+						Some explanations: <br>
+						<ul>
+							<li>The expression srand(time(nullptr)) initializes the system's pseudo-random number generator.</li>
+							<li>The expression rand() % n + 1 generates a random number between 1 and n (here set to 10).</li>
+							<li>The system headers &lt;cstdlib&gt; and &lt;ctime&gt; make available the functions used in these expressions. (The initial c hints they are borrowed from C.)</li>
+						</ul>
+					</p>
+					<p class="lead">Starting with this program:</p>
+					<p class="lead">
+						(a) Run the program, and make sure you understand it <br>
+						(b) Modify the program so that instead of merely saying that a guess is wrong, it indicates whether the guess was too high or too low <br>
+						(c) Count the number of guesses made, and report them when the user finally succeeds in guessing the secret number <br>
+						(d) Change n to something larger, since this version allows the user to guess the secret number more quickly
+					</p>
 				</div>
 				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
 					<div class="list-group">

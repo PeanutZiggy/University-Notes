@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OOAD - Section 3 Lecture Notes</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="../../css/OOADSection1LectureStyle.css">
+	</head>
+	<body>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<div class="container">
+			<h1>Object Oriented Analysis and Design</h1>
+			<h4>Section 3: Object-Oriented Design (Part 2)</h4>
+			<h4 style="text-align: center;">Lecture Notes</h4>
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="../index.html">Object Oriented Analysis and Design</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Section 3</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Lecture Notes</li>
+				</ol>
+			</nav>
+
+			<div class="row">
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<h4 id="section1">UML Class Notation</h4>
+					<p class="lead">
+						Classes are named in upper camel case <br>
+						Use descriptive names that are nouns or noun phrases <br>
+						Avoid abbreviations <br>
+					</p>
+					<h4 id="section2">Attribute Compartment</h4>
+					<p class="lead">
+						visibility name : type multiplicity = initialValue <br>
+						<br>
+						Everything is optional except name <br>
+						initialValue is the value the attribute gets when objects of the class are instantiated <br>
+						Attributes are named in low camel case <br>
+						<ul>
+							<li>Use descriptive names that are nouns or noun phrases</li>
+							<li>Avoid abbreviations</li>
+						</ul>
+						Attributes may be prefixed with a stereotype and postfixed with a list of tagged values
+					</p>
+					<h4 id="section3">Visibility</h4>
+					<p class="lead">
+						<table class="table">
+							<tr>
+								<th>Symbol</th>
+								<th>Name</th>
+								<th>Semantics</th>
+							</tr>
+							<tr>
+								<td>+</td>
+								<td>public</td>
+								<td>Any element that can access the class can access any of its features with public visibility.</td>
+							</tr>
+							<tr>
+								<td>-</td>
+								<td>private</td>
+								<td>Only operations within the class can access features with private visibility.</td>
+							</tr>
+							<tr>
+								<td>#</td>
+								<td>protected</td>
+								<td>Only operations within the class, or within children of the class, can access features with protected visibility.</td>
+							</tr>
+							<tr>
+								<td>~</td>
+								<td>package</td>
+								<td>Any element that is in the same package as the class, or in a nested sub-package, can access any of its features with package visibility.</td>
+							</tr>
+						</table>
+					</p>
+					<p class="lead">
+						You may ignore visibility in Analysis <br>
+						In design, attributes usually have private visibility (encapsulation) <br>
+					</p>
+					<h4 id="section4">Multiplicity</h4>
+					<p class="lead">
+						Multiplicity allows you to model collection of things <br>
+						[0..1] means that the attribute may have the value null
+					</p>
+					<h4 id="section5">Operation Compartment</h4>
+					<p class="lead">
+						Operations are named lower camel case <br>
+						Special symbols and abbreviations are avoided <br>
+						Operation names are usually a verb or verb phrase <br>
+						Operations may have more than one return type <br>
+						They can return multiple objects <br>
+						Operations may be prefixed with a stereotype and postfixed with a list of tagged values
+					</p>
+					<h5>Parameter Direction</h5>
+					<p class="lead">
+						
+					</p>
+					<h4 id="section6">Scope</h4>
+					<h4 id="section7">Object Construction</h4>
+					<h4 id="section8">Modelling Class Methods</h4>
+					<h4 id="section9">Design - Refining Analysis Relationships</h4>
+					<h4 id="section10">Design Relationships</h4>
+					<h4 id="section11">Aggregation and Composition</h4>
+					<h4 id="section12">1 to 1 and many to 1 associations</h4>
+					<h4 id="section13">1 to many associations</h4>
+					<h4 id="section14">Many to Many Associations</h4>
+					<h4 id="section15">Bi-directional Associations</h4>
+					<h4 id="section16">Association Classes</h4>
+					<h4 id="section17">Generic GUI Model</h4>
+					<h4 id="section18">Class and Interfaces</h4>
+					<h4 id="section19">Summary</h4>
+					<h4 id="section20">Design - Use Case Realisation</h4>
+					<h4 id="section21">Interaction Diagrams in Design</h4>
+					<h4 id="section22">Concurrency Modelling</h4>
+					<h4 id="section23">Subsystem Interactions</h4>
+					<h4 id="section24">Timing Diagrams</h4>
+					<h4 id="section25">Summary</h4>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
+					<div class="list-group">
+						<a href="#section1" class="list-group-item list-group-item-action">UML Class Notation</a>
+						<a href="#section2" class="list-group-item list-group-item-action">Attribute Compartment</a>
+						<a href="#section3" class="list-group-item list-group-item-action">Visibility</a>
+						<a href="#section4" class="list-group-item list-group-item-action">Multiplicity</a>
+						<a href="#section5" class="list-group-item list-group-item-action">Operation Compartment</a>
+						<a href="#section6" class="list-group-item list-group-item-action">Scope</a>
+						<a href="#section7" class="list-group-item list-group-item-action">Object Construction</a>
+						<a href="#section8" class="list-group-item list-group-item-action">Modelling Class Methods</a>
+						<a href="#section9" class="list-group-item list-group-item-action">Design - Refining Analysis Relationships</a>
+						<a href="#section10" class="list-group-item list-group-item-action">Design Relationships</a>
+						<a href="#section11" class="list-group-item list-group-item-action">Aggregation and Composition</a>
+						<a href="#section12" class="list-group-item list-group-item-action">1 to 1 and Many to 1 Associations</a>
+						<a href="#section13" class="list-group-item list-group-item-action">1 to Many Associations</a>
+						<a href="#section14" class="list-group-item list-group-item-action">Many to Many Associations</a>
+						<a href="#section15" class="list-group-item list-group-item-action">Bi-directional Associations</a>
+						<a href="#section16" class="list-group-item list-group-item-action">Association Classes</a>
+						<a href="#section17" class="list-group-item list-group-item-action">Generic GUI Model</a>
+						<a href="#section18" class="list-group-item list-group-item-action">Classes and Interfaces</a>
+						<a href="#section19" class="list-group-item list-group-item-action">Summary</a>
+						<a href="#section20" class="list-group-item list-group-item-action">Design - Use Case Realisation</a>
+						<a href="#section21" class="list-group-item list-group-item-action">Interaction Diagrams in Design</a>
+						<a href="#section22" class="list-group-item list-group-item-action">Concurrency Modelling</a>
+						<a href="#section23" class="list-group-item list-group-item-action">Subsystem Interactions</a>
+						<a href="#section24" class="list-group-item list-group-item-action">Timing Diagrams</a>
+						<a href="#section25" class="list-group-item list-group-item-action">Summary</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
