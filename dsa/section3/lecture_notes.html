@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DSA - Section 3 Lecture Notes</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="../../css/dsaSection3LectureStyle.css">
+	</head>
+	<body>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<div class="container">
+			<h1>Data Structures and Algorithms</h1>
+			<h4>Section 3: Trees, Heaps and Queues</h4>
+			<h4 style="text-align: center;">Lecture Notes</h4>
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="../index.html">Data Structures and Algorithms</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Section 3</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Lecture Notes</li>
+				</ol>
+			</nav>
+
+			<div class="row">
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<h4 id="section1">Learning Objectives</h4>
+					<p class="lead">Understand and be able to use:</p>
+					<ul>
+						<li>the abstract data type queue</li>
+						<li>the data structures:
+							<ul>
+								<li>Heaps</li>
+								<li>Extensible arrays</li>
+							</ul>
+						</li>
+					</ul>
+					<p class="lead">Be able to understand, apply and develop algorithms to those above, most notably:</p>
+					<ul>
+						<li>Adding elements</li>
+						<li>Extracting elements</li>
+						<li>Heap sort</li>
+					</ul>
+					<h4 id="section2">Trees</h4>
+					<p class="lead">
+						Trees are data structures that have a root, nodes branches and leaves <br>
+						Most nodes are at the end of a branch. The only exception is the root (which is the top node) <br>
+						Branches proceed from notes <br>
+						Nodes without branches are called leaves <br>
+						The nodes n2, n3 at the end of node n1's branches are its children, and n1 is the parent of n2 and n3. <br>
+						The root is thus a node with no parents <br>
+						The leaves are nodes with no children <br>
+					</p>
+					<h5>Tree Types</h5>
+					<p class="lead">
+						A binary tree is a tree in which each node has, at most, two children. <br>
+						A perfectly balanced binary tree is a tree whose least deep leaf is no more than one level apart from the deepest one.
+					</p>
+					<h4 id="section3">Heaps</h4>
+					<p class="lead">
+						A heap is a perfectly balanced binary tree such that:
+					</p>
+					<ul>
+						<li>No node is larger than its parent</li>
+						<li>All items on the lowest level are so far to the left as possible</li>
+					</ul>
+					<h4 id="section4">Heap Operations</h4>
+					<p class="lead">
+						Heap is empty if the root is empty <br>
+						Heap insertion: add a node to the heap - displacing other nodes as necesary so that the heap remains a heap <br>
+						Heap extraction: remove the element with the highest value in the heap (the root), moving the other nodes as necessary so that the heaps remains a heap.
+					</p>
+					<h4 id="section5">Heap Insertion</h4>
+					<p class="lead">
+						Add the new node as a leaf <br>
+						Sift the new node up to its correct position (at most log n swaps - because the tree has at most log n levels)
+					</p>
+					<h4 id="section6">Heap Extraction</h4>
+					<p class="lead">
+						Extract the root, and place the last leaf in the root position <br>
+						Re-establish the heap conditions (at most log n swaps)
+					</p>
+					<h5>Heaps and Arrays</h5>
+					<p class="lead">
+						Heaps can be represented as arrays
+					</p>
+					<h5>An implementation in Java</h5>
+					<p class="lead">
+						<code>
+							public class HeapPQ implements PriorityQueue { <br>
+							&emsp;&emsp;&emsp;&emsp;private int data; //data[] is the heap <br>
+							&emsp;&emsp;&emsp;&emsp;private int count = 0; <br>
+							<br>
+							&emsp;&emsp;&emsp;&emsp;public HeapPQ(int size) {data = new int[size];} <br>
+							<br>
+							&emsp;&emsp;&emsp;&emsp;public boolean isEmpty() {return count == 0;} <br>
+							} <br>
+						</code>
+					</p>
+					<h5>Relating Indices in Java</h5>
+					<p class="lead">
+						You will remember that:
+					</p>
+					<ul>
+						<li>the parent of node n is node (n-1)/2</li>
+						<li>the left child of node n is node 2n + 1</li>
+						<li>the right child of node n is node 2n + 2</li>
+					</ul>
+					<p class="lead">
+						<code>
+							private int parent(int n) {return (n-1)/2;} <br>
+							private int left(int n) {return n*2 + 1;} <br>
+							private int right(int n) {return n*2 + 2;} <br>
+						</code>
+					</p>
+					<h5>Heap Insertion</h5>
+					<p class="lead">Function add(elt) where data is the array containing the heap and count is the heap size:</p>
+					<p class="lead">
+						<code>
+							pos &larr; count + 1 <br>
+							WHILE pos > 1 AND data[parent of pos] < elt <br>
+							&emsp;&emsp;&emsp;&emsp;data[pos] &larr; data[parent of pos] <br>
+							&emsp;&emsp;&emsp;&emsp;pos &larr; parent of pos <br>
+							data[pos] &larr; elt <br>
+							count &larr; count + 1 <br>
+						</code>
+					</p>
+					<h5>Heap Extraction</h5>
+					<p class="lead">Function extractMax() where "data" is the array containing the heap and "count" is the heap size: </p>
+					<p class="lead">
+						<code>
+							max &larr; data[1] <br>
+							data[1] &larr; data[count] <br>
+							count &larr; count - 1 <br>
+							moveDown(data, 1, count) <br>
+							Return max <br>
+						</code>
+						Function moveDown(data, first, last) moves the element at first position down to its proper position
+					</p>
+					<h5>Moving a Key Down the Heap</h5>
+					<p class="lead">Function moveDown(data, first, last):</p>
+					<p class="lead">
+						<code>
+							WHILE left child of first <= last <br>
+							&emsp;&emsp;&emsp;&emsp;larger &larr; position of the child with the larger value <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;IF data[first] >= data[larger] THEN <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Break the while loop <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap first and larger in data <br>
+							&emsp;&emsp;&emsp;&emsp;first &larr; larger <br>
+						</code>
+					</p>
+					<p class="lead">Remember that first, larger and last are positions in array data. The value of largest, for example, is data[largest].</p>
+					<h4 id="section7">Sorting using Heaps</h4>
+					<p class="lead">
+						Heap sort involves: <br>
+						<ul>
+							<li>adding the elements to a heap, and then</li>
+							<li>extracting the elements from the heap</li>
+						</ul>
+					</p>
+					<p class="lead">
+						This could be done with just one array: <br>
+						<ul>
+							<li>in the first phase, the heap grows as the unsorted section shrinks</li>
+							<li>in the second phase, the heap shrinks as the sorted portion grows</li>
+						</ul>
+					</p>
+					<h5>Heap Sort in Java</h5>
+					<p class="lead">
+						<code>
+							void heapsort(int[] data) { <br>
+							&emsp;&emsp;&emsp;&emsp;\\first phase: heap goes from data[i+1] to <br>
+							&emsp;&emsp;&emsp;&emsp;\\data[data.length-1]. The rest of data[] is unsorted <br>
+							&emsp;&emsp;&emsp;&emsp;for(int i = data.length/2 - 1; i >= 0; i--) { <br>	
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;moveDown(data, i, data.length-1); <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;\\second phase: heap goes from data[0] to data[i] <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;\\the rest contains the largest elements, sorted <br>
+							&emsp;&emsp;&emsp;&emsp;}
+							&emsp;&emsp;&emsp;&emsp;for(int i = data.length - 1; i >= 1; i--) { <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(data, 0, i); <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;moveDown(data, 0, i-1); <br>
+							&emsp;&emsp;&emsp;&emsp;} <br>
+							}
+						</code>
+					</p>
+					<h4 id="section8">Heap Sort Analysis</h4>
+					<p class="lead">
+						Heap sort performs O(n) heap operations, each taking O(log n) time, in total O(n log n) time in the worst case. <br>
+						Heap sort and quicksort have both average time complexity of O(n log n), but heap sort is normally slower than quicksort (different constant factors). <br>
+						Quicksort is preferred when no guaranteed response time needed <br>
+						Heap sort requires only O(1) extra memory space, in contrast to O(n) for merge sort or O(log n) for quicksort (on average, O(n) in the worst case). <br>
+						A refinement: build the heap from the bottom up. This can be shown to take O(n) time, but the O(n log n) selection phase still dominates. <br>
+					</p>
+					<h4 id="section9">Dynamic Data Structures</h4>
+					<p class="lead">
+						Amounts of data to store often vary in size in ways we can not determine beforehand <br>
+						Reallocate-and-copy of arrays can solve this problem <br>
+						In general, linked structures are more flexible: <br>
+						<ul>
+							<li>singly linked lists</li>
+							<li>doubly linked lists and circular lists</li>
+							<li>trees and graphs</li>
+						</ul>
+					</p>
+					<h4 id="section10">Queues</h4>
+					<p class="lead">
+						First in First out (FIFO) <br>
+						As opposed to last in first out (stacks) <br>
+						And also to priority queues (in which priorities may not reflect the actual order of addition)
+					</p>
+					<h5>Queue Operations</h5>
+					<p class="lead">
+						You must always remove the element that has been in the queue the longest. <br>
+						The operations are thus: <br>
+						<ul>
+							<li>Add an element to the queue</li>
+							<li>Remove the element added the longest time before</li>
+							<li>Check whether the queue is empty</li>
+						</ul>
+					</p>
+					<h5>A Queue Abstract Data Type</h5>
+					<p class="lead">
+						<code>
+							public interface Queue { <br>
+							&emsp;//Is the queue empty? <br>
+							&emsp;boolean isEmpty(); <br>
+							&emsp;//Add an element to the queue <br>
+							&emsp;void enqueue(int elt); <br>
+							&emsp;//Remove and return the earliest element of the queue <br>
+							&emsp;int dequeue(); <br>
+							} <br>
+						</code>
+					</p>
+					<h5>A Stack Abstract Data Type</h5>
+					<p class="lead">
+						<code>
+							//a stack of integers <br>
+							public interface Stack { <br>
+							&emsp;//is the stack empty? <br>
+							&emsp;boolean isEmpty(); <br>
+							&emsp;//add (push) an element into the stack <br>
+							&emsp;void push(int elt); <br>
+							&emsp;//remove and return the most recently pushed element still in the stack <br>
+							&emsp;int pop(); <br>
+							} <br>
+						</code>
+					</p>
+					<h5>Extending Arrays by Relocate-and-Copy</h5>
+					<p class="lead">
+						Because size is unpredictable: <br>
+						initial array allocation may fall short <br>
+						trying to be safe is wasteful <br>
+						A solution: extensible arrays <br>
+						start with a small array <br>
+						if more space is needed, create a new, larger array and copy elements into it... <br>
+						...adds O(n) to space and O(n) to time per extension <br>
+					</p>
+					<h5>Stacks with Relocate-and-Copy</h5>
+					<p class="lead">
+						<code>
+							public class ArrayStack implements Stack { <br>
+							&emsp;private int count = 0; <br>
+							&emsp;private int[] data = new int[1]; <br>
+							<br>
+							&emsp;public boolean isEmpty(){ <br>
+							&emsp;&emsp;return count == 0; <br>
+							&emsp;} <br>
+							&emsp;public int pop() { <br>
+							&emsp;&emsp;count--; <br>
+							&emsp;&emsp;return data[count]; <br>
+							&emsp;} <br>
+							}
+						</code>
+					</p>
+					<p class="lead">
+						Which was the same as last session. However: <br>
+						<code>
+							public void push(int elt) { <br>
+							&emsp;&emsp;&emsp;if(count == data.length){ //not enough space <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;int[] d1 = new int[data.length + 1]; // new <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;for(int i = 0; i < count; i++){ // array <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;d1[i] = data[i]; // copy elements<br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;data = d1; // use new array <br>
+							&emsp;&emsp;&emsp;} <br>
+							&emsp;&emsp;&emsp;data[count] = elt; // add new element<br>
+							&emsp;&emsp;&emsp;count++; <br>
+							}
+						</code>
+					</p>
+					<h4 id="section11">Amortised Analysis</h4>
+					<p class="lead">
+						Amortised complexity refers to the average complexity over a sequence of operations, which normally depend on each other (usually choosing the worst case regarding data input). <br> <br>
+						This is different from what we normally call average case complexity, which averages over different input data for a single, independent operation. <br> <br>
+						E.g. the average complexity (on an array of length n) of Quick sort is O(n log n), the amortised complexity over a sequence of quick sort applications is O(n<sup>2</sup>) (implying the worst case per application.) <br> <br>
+					</p>
+					<h5>Analysis of the Implementation</h5>
+					<p class="lead">
+						In a sequence of n pushes, the number of copies is <br>
+						1 + 2 + 3 + ... + (n - 1)  = n (n - 1) / 2 = O(n<sup>2</sup>) <br>
+						<br>
+						This means that per push operation, there is an amortised cost of O(n). <br>
+						<br>
+						Going up by a larger step than 1 improves things, but only by a constant factor.
+					</p>
+					<h5>An Improvement</h5>
+					<p class="lead">
+						If we double the size whenever we extend, the number of elements copied for n=2<sup>k</sup> pushes is <br>
+						1 + 2 + 2<sup>2</sup> + ... + 2<sup>k-1</sup> = 2<sup>k</sup> - 1 = O(n) <br>
+						<br>
+						This averages out at O(1) per operation, i.e. the amortised cost over the sequence of operations is constant.
+					</p>
+					<h5>Proof: Sum of Powers of 2</h5>
+					<p class="lead">
+						This has been used in the last analysis and the telescopic sum. <br>
+						<br>
+						Statement: &#8721;i=0...k-1 2i = 1 + 2 + 22 + ... + 2k-1 = 2k - 1 <br>
+						<br>
+						Proof by in induction: <br>
+						base case k=2: 20 + 21 = 1 + 2 = 3 = 4 - 1 = 22 - 1 <br>
+						step k to k+1: 20 + ... + 2k-1 + 2k = 2k - 1 + 2k <br>
+						= 2*2k - 1 <br>
+						= 2k+1 - 1 <br>
+					</p>
+					<h5>Array-like Operations in Extensible Arrays</h5>
+					<p class="lead">
+						Some O(1) time operations in extensible arrays: <br>
+						<code>
+							public int size() { <br>
+							&emsp;&emsp;&emsp;return count; <br>
+							} <br>
+							<br>
+							public int elementAt(int pos) { <br>
+							&emsp;&emsp;&emsp;return data[pos]; <br>
+							} <br>
+							<br>	
+							public void setElementAt(int pos, int value) { <br>
+							&emsp;&emsp;&emsp;data[pos] = value; <br>
+							} <br>
+						</code>
+					</p>
+					<h4 id="section12">Summary of Extensible Arrays</h4>
+					<p class="lead">
+						Extensible arrays are an implementation of the Stack ADT that use O(n) space <br>
+						With the right extension policy, these operations take O(1) time <br>
+						They also provide array-like operations at O(1) time <br>
+						Implementing the Queue ADT with extensible arrays is not so convenient <br>
+						For greater convenience, we can use pointers <br>
+					</p>
+					<h5>Extensible Arrays in Java</h5>
+					<p class="lead">
+						Java has data structures for extensible arrays: <br>
+						Vectors and ArrayLists <br>
+						Vectors and ArrayLists are like arrays that can be extended as necessary <br>
+						<ul>
+							<li>You don't have to worry about their size</li>
+							<li>You don't have to extend them explicitly</li>
+							<li>Vectors have objects as elements</li>
+						</ul>
+					</p>
+					<h5>ArrayLists in Java</h5>
+					<p class="lead">
+						Import them: <br>
+						<code>
+							import java.util.List; // ArrayList and Vector are lists <br>
+							import java.util.ArrayList; <br>
+						</code>
+						Create an ArrayList:<br>
+						<code>
+							List l1 = new ArrayList(); <br>
+						</code>
+						Programming against an Interface is more flexible. <br>
+						<br>
+						Adding at index i moves following elements to the right: <br>
+						<code>
+							al.add(i, p); <br>
+						</code>
+						(Array)List and Vector use Generics since Java 5.0 (JDK 1.5): <br>
+						<code>
+							List<String> stringList = new ArrayList<String> (); <br>
+						</code>
+					</p>
+					<h5>Vectors in Java</h5>
+					<p class="lead">
+						To use them you have to import them: <br>
+						<code>
+							import java.util.Vector; <br>
+						</code>
+						<br>
+						To create a vector v1: <br>
+						<code>
+							Vector v1 = new Vector(); <br>
+						</code>
+						<br>
+						The size of vector v1 is: <br>
+						<code>
+							v1.size(); <br>
+						</code>
+						<br>
+						To test whether v1 is empty: <br>
+						<code></code>
+					</p>
+					<h5>Other Vector and ArrayList Methods in Java</h5>
+					<p class="lead">
+						To add an element (object p) at the end of the vector v1 (arrayList a1): <br>
+						<code>
+							v1.addElement(p); a1.add(p); <br>
+						</code>
+						To access the element at position n in vector v1 (arrayList a1): <br>
+						<code>
+							e_n = v1.elementAt(n); e_n = al.get(n); <br>
+						</code>
+						To assign element p to position n in vector v1: <br>
+						<code>
+							v1.set(n, p); // note that this returns the object previously in that position <br>
+						</code>
+					</p>
+					<h4 id="section13">Reading</h4>
+					<p class="lead">
+						Weiss: Chapters 15, 17 and 20 <br>
+						Drozdek: Sections 4.2, 6.1 and 9.3.2 <br>
+					</p>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-3 hidden-xs hidden-sm">
+					<div class="list-group">
+						<a href="#section1" class="list-group-item list-group-item-action">Learning Objectives</a>
+						<a href="#section2" class="list-group-item list-group-item-action">Trees</a>
+						<a href="#section3" class="list-group-item list-group-item-action">Heaps</a>
+						<a href="#section4" class="list-group-item list-group-item-action">Heap Operations</a>
+						<a href="#section5" class="list-group-item list-group-item-action">Heap Insertion</a>
+						<a href="#section6" class="list-group-item list-group-item-action">Heap Extraction</a>
+						<a href="#section7" class="list-group-item list-group-item-action">Sorting using Heaps</a>
+						<a href="#section8" class="list-group-item list-group-item-action">Heap Sort Analysis</a>
+						<a href="#section9" class="list-group-item list-group-item-action">Dynamic Data Structures</a>
+						<a href="#section10" class="list-group-item list-group-item-action">Queues</a>
+						<a href="#section11" class="list-group-item list-group-item-action">Amortised Analysis</a>
+						<a href="#section12" class="list-group-item list-group-item-action">Summary of Extensible Arrays</a>
+						<a href="#section13" class="list-group-item list-group-item-action">Reading</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

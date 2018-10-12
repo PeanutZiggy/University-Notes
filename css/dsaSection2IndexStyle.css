@@ -1,0 +1,15 @@
+h1{
+	margin-top: 10vh;
+	text-align: center;
+}
+
+h4{
+	text-align: center;
+}
+
+#resources_list, nav{
+	width: 50%;
+	margin-left: 25%;
+	margin-top: 10vh;
+	text-align: center;
+}
